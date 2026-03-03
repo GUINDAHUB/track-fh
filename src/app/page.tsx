@@ -9,6 +9,10 @@ import { TimingsChart } from "./ui/TimingsChart";
 import { LeadInspector } from "./ui/LeadInspector";
 import { PendingDocs } from "./ui/PendingDocs";
 
+// Sin caché: cada carga/recarga pide datos frescos a la base de datos
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 export default async function Home() {
   const [kpis, funnel, timings, avgToLink] = await Promise.all([
     getKpis(),
