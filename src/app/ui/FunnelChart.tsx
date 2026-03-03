@@ -53,13 +53,15 @@ export function FunnelChart({ data }: Props) {
           />
           <YAxis />
           <Tooltip
-            formatter={(value: number | string | null | undefined) => [
-              (typeof value === "number"
-                ? value
-                : Number(value ?? 0)
-              ).toLocaleString("es-ES") + " leads",
-              "Leads",
-            ]}
+            formatter={(value: any) => {
+              const raw = Array.isArray(value) ? value[0] : value;
+              const num =
+                typeof raw === "number" ? raw : Number(raw ?? 0);
+              return [
+                num.toLocaleString("es-ES") + " leads",
+                "Leads",
+              ] as [string, string];
+            }}
           />
           <Bar
             dataKey="leads"

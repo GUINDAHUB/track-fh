@@ -62,10 +62,14 @@ export function TimingsChart({ data }: Props) {
             tick={{ fontSize: 11 }}
           />
           <Tooltip
-            formatter={(value: number | string | null | undefined) => {
+            formatter={(value: any) => {
+              const raw = Array.isArray(value) ? value[0] : value;
               const num =
-                typeof value === "number" ? value : Number(value ?? 0);
-              return [`${num.toFixed(1)} min`, "Tiempo medio"];
+                typeof raw === "number" ? raw : Number(raw ?? 0);
+              return [`${num.toFixed(1)} min`, "Tiempo medio"] as [
+                string,
+                string,
+              ];
             }}
           />
           <Bar
