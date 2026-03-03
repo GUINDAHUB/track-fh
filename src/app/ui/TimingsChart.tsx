@@ -62,10 +62,11 @@ export function TimingsChart({ data }: Props) {
             tick={{ fontSize: 11 }}
           />
           <Tooltip
-            formatter={(value: number) => [
-              `${value.toFixed(1)} min`,
-              "Tiempo medio",
-            ]}
+            formatter={(value: number | string | null | undefined) => {
+              const num =
+                typeof value === "number" ? value : Number(value ?? 0);
+              return [`${num.toFixed(1)} min`, "Tiempo medio"];
+            }}
           />
           <Bar
             dataKey="avg_minutes"
