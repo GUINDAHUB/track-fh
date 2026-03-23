@@ -8,6 +8,8 @@ import { FunnelChart } from "./ui/FunnelChart";
 import { TimingsChart } from "./ui/TimingsChart";
 import { LeadInspector } from "./ui/LeadInspector";
 import { PendingDocs } from "./ui/PendingDocs";
+import { LeadsToCall } from "./ui/LeadsToCall";
+import { DocsSent } from "./ui/DocsSent";
 
 // Sin caché: cada carga/recarga pide datos frescos a la base de datos
 export const dynamic = "force-dynamic";
@@ -264,6 +266,31 @@ export default async function Home() {
             </p>
           </div>
           <PendingDocs />
+        </section>
+
+        <section className="space-y-4">
+          <div className="flex flex-col gap-2 sm:flex-row sm:items-baseline sm:justify-between">
+            <h2 className="text-base font-semibold text-slate-900">
+              Leads para llamar (link enviado + 2 recordatorios)
+            </h2>
+            <p className="text-xs text-slate-500">
+              Leads que siguen en estado link_sent después de haber recibido al
+              menos 2 recordatorios de documentación.
+            </p>
+          </div>
+          <LeadsToCall />
+        </section>
+
+        <section className="space-y-4">
+          <div className="flex flex-col gap-2 sm:flex-row sm:items-baseline sm:justify-between">
+            <h2 className="text-base font-semibold text-slate-900">
+              Documentación enviada
+            </h2>
+            <p className="text-xs text-slate-500">
+              Leads que han completado el proceso y enviado su documentación.
+            </p>
+          </div>
+          <DocsSent />
         </section>
       </main>
     </div>
